@@ -1,4 +1,5 @@
 from ciphers import *
+from recognize import *
 from string import ascii_letters
 import random
 
@@ -14,3 +15,13 @@ def test_ceasar_random():
 	assert caesar(ciphertext, 0) == ciphertext
 	assert caesar(caesar(ciphertext, 428),-428) == ciphertext
 	assert caesar(caesar(ciphertext, 20),6) == ciphertext
+
+def test_recognize():
+	assert classify("flag") == 1
+	assert classify("inputwithflaghere") == 1
+	assert classify("INPUTWITHFLAGHERE") == 1
+	assert classify("pIcOcTf{something}") == 1
+	assert classify("jskldf") == 0
+	assert classify("") == 0
+	assert classify("FLA") == 0
+	

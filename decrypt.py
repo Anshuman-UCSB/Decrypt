@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from ciphers import *
+from recognize import *
 ascii_art = """
 ________                                      __   
 \______ \   ____   ___________ ___.__._______/  |_ 
@@ -24,5 +25,5 @@ if args.text == []:
 args.text = " ".join(args.text)
 if not args.nostrip:
 	args.text = args.text.strip()
-		
-print(caesar(args.text,1))
+	
+print("Rot13: "+caesar(args.text, 13))
