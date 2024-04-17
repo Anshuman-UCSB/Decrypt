@@ -11,6 +11,8 @@ ________                                      __
 """.strip()
 import argparse
 import sys
+from colorama import Fore, Back, Style
+
 parser = argparse.ArgumentParser(
 	prog = "decrypt",
 	description = "decrypt is a CLI utility to decrypt strings in common encryption methods",
@@ -26,4 +28,14 @@ args.text = " ".join(args.text)
 if not args.nostrip:
 	args.text = args.text.strip()
 	
-print("Rot13: "+caesar(args.text, 13))
+def style(arg):
+	print(arg,end='')
+
+F_WIDTH = 8
+def attempt(string, name, func):
+	res = func(args.text)
+	style(Fore.RED)
+	print(f"{name}".ljust(F_WIDTH)+": "+ res)
+	style(Style.RESET_ALL)
+
+attempt(args.text, "ROT13", lambda s: caesar(s, 13))
