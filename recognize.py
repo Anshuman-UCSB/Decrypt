@@ -1,6 +1,10 @@
 import os
 
-strings = open("strings.txt",'r').read().splitlines()
+# strings = open("strings.txt",'r').read().splitlines()
+strings = """
+flag
+ctf
+""".splitlines()
 assert all(s.lower() == s for s in strings)
 
 def classify(inp, target=None):
